@@ -5,7 +5,7 @@ var ReactDOM = require('react-dom');
 var TodoComponent = React.createClass({
     getInitialState: function(){
         return {
-    todos:['Playing badminton','Watching videos','Website Building', 'Thinking']
+    todos:['Wake up','Brush teeth','Eat Breakfast','Work', 'Sleep']
   }
   },
 
@@ -15,13 +15,14 @@ var TodoComponent = React.createClass({
       todos = todos.map(function(item,index)
       {
         return(
-          <TodoItem item ={item} key={index}/>
+          <li key ={index}>
+          {item} </li>
         );
       });
 
         return(
           <div id="todo-list">
-            <p>My Hobbies:</p>
+            <p>My Routine:</p>
             <ul>
             {todos}
             </ul>
@@ -30,21 +31,6 @@ var TodoComponent = React.createClass({
 
         );
     }//render
-});
-
-//Creating TodoItem
-var TodoItem = React.createClass({
-render:function(){
-  return(
-    <li>
-      <div className="todo-item">
-      <span className="itemName">{this.props.item}  </span>
-
-      </div>
-    </li>
-  );
-}
-
 });
 
 //Put component in html
