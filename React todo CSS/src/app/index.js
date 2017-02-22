@@ -4,7 +4,6 @@ var ReactDOM = require('react-dom');
 //module requires
 require('./css/index.css');
 var TodoItem = require('./todoItem');
-var AddItem = require('./addItem');
 
 //Create a component
 var TodoComponent = React.createClass({
@@ -29,7 +28,6 @@ var TodoComponent = React.createClass({
             <p>My Hobbies:</p>
             <ul>
             {todos}
-            <AddItem onAdd={this.onAdd}/>
             </ul>
 
             </div>
@@ -46,15 +44,6 @@ todos:updatedTodos
 
 });
 
-},
-
-onAdd:function(item){
-var updatedTodos = this.state.todos;
-updatedTodos.push(item);
-this.setState({
-todos:updatedTodos
-
-})
 }
 
 });

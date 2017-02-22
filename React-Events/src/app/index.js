@@ -1,11 +1,6 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
 
-//module requires
-require('./css/index.css');
-var TodoItem = require('./todoItem');
-var AddItem = require('./addItem');
-
 //Create a component
 var TodoComponent = React.createClass({
     getInitialState: function(){
@@ -29,7 +24,6 @@ var TodoComponent = React.createClass({
             <p>My Hobbies:</p>
             <ul>
             {todos}
-            <AddItem onAdd={this.onAdd}/>
             </ul>
 
             </div>
@@ -46,19 +40,28 @@ todos:updatedTodos
 
 });
 
-},
-
-onAdd:function(item){
-var updatedTodos = this.state.todos;
-updatedTodos.push(item);
-this.setState({
-todos:updatedTodos
-
-})
 }
 
 });
 
+//Creating TodoItem
+var TodoItem = React.createClass({
+    render: function(){
+        return(
+            <li>
+                <div className="todo-item">
+                    <span className="item-name">{this.props.item}</span>
+                    <span className="item-remove" onClick={this.handleDelete}> X </span>
+                </div>
+            </li>
+        );
+    },
+
+    //Custom functions
+    handleDelete: function(){
+        this.props.onDelete(this.props.item);
+    }
+});
 //Put component in html
 
 ReactDOM.render(<TodoComponent/>, document.getElementById('todo-wrapper'));
